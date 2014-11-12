@@ -1,0 +1,22 @@
+{
+    "chmod": "0755",
+    "directories": [
+        "src",
+        "definitions",
+        "manifests",
+        "files"
+    ],
+    "finder": [
+        {
+            "name": "*.php",
+            "exclude": ["Tests"],
+            "in": "vendor"
+        }
+    ],
+    "base-path": ".",
+    "intercept": true,
+    "git-version": "package_version",
+    "main": "bin/conman",
+    "output": "dist/conman.phar",
+    "stub": true
+}

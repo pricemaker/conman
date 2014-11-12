@@ -1,0 +1,26 @@
+#!/bin/bash
+set -e
+
+BOX_PHAR_PATH="bin/box.phar"
+
+echo "--- Installing dependencies"
+
+composer install --no-dev --optimize-autoloader --no-interaction
+
+if [ ! -f "$BOX_PHAR_PATH" ]
+then
+  echo "--- Downloading box.phar... "
+  curl -LSs http://box-project.org/installer.php | php
+  mv box.phar "$BOX_PHAR_PATH"
+else
+  echo "--- Updating box.phar... "
+  "$BOX_PHAR_PATH" update
+fi
+
+echo "--- Building conman.phar"
+mkdir -p dist
+$BOX_PHAR_PATH build --configuration="box.json"
+
+VERSION=$(dist/conman.phar --version | sed -n "s/.*version \([^\s]*\)/\1/p")
+
+echo "--- built conman.phar version:$VERSION"

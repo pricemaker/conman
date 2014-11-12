@@ -1,0 +1,3 @@
+%realm%.%role%
+  id %id%
+  webdeploy %role%

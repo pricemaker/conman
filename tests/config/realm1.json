@@ -1,0 +1,1 @@
+{"key1":"realm1 value1","key2":{"subkey1":"subvalue1","nullable":null,"callable":"callable result","callable2":"callable result 2"},"globals":{"test_key":"test_value"},"defaults":{"test_key":"subvalue1"},"child_only":"realm1 child value"}

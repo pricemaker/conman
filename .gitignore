@@ -1,0 +1,11 @@
+/.idea/
+/.php-version
+/vendor/
+/box.phar
+/dist/
+/public/manifest.json
+bin/jsonlint
+bin/phpunit
+bin/uuid
+bin/validate-json
+bin/box.phar
