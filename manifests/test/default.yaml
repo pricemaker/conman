@@ -1,0 +1,9 @@
+stages:
+  prepare:
+    - example-step
+  run-server:
+    - server-step
+  run-agent:
+    - agent-step
+    - sync
+    - commit
