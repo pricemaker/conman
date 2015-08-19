@@ -19,7 +19,6 @@ class FileCommand extends Command {
             ->addArgument('file', InputArgument::REQUIRED, 'The name of the file to load')
             ->addOption('role', 'r', InputOption::VALUE_REQUIRED, 'The role to fetch the file for')
             ->addOption('realm', 'm', InputOption::VALUE_OPTIONAL, 'The provisioning realm for the file', 'production')
-            ->addOption('arg', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Optional additional arguments')
         ;
     }
 
@@ -29,10 +28,7 @@ class FileCommand extends Command {
         $service = $this->getApplication()->getService();
         $service->setOutput($output);
 
-        $args = $input->getOption('arg');
-        $args['role'] = $input->getOption('role');
-        $args['realm'] = $input->getOption('realm');
-
+        $args = $input->getOptions();
         $file = $input->getArgument('file');
 
         $manifest = $service->file($file, $args, $input->getOption('base'));

@@ -17,7 +17,7 @@ class ManifestCommand extends Command {
             ->setDescription('Get the config for a role')
             ->addOption('role', 'r', InputOption::VALUE_REQUIRED, 'The role to fetch the config for')
             ->addOption('realm', 'm', InputOption::VALUE_OPTIONAL, 'The provisioning realm for the config', 'production')
-            ->addOption('arg', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Optional additional arguments')
+            ->addOption('ref', 'f', InputOption::VALUE_OPTIONAL, 'The provisioning ref for the config', 'production')
         ;
     }
 
@@ -27,11 +27,7 @@ class ManifestCommand extends Command {
         $service = $this->getApplication()->getService();
         $service->setOutput($output);
 
-        $args = $input->getOption('arg');
-        $args['role'] = $input->getOption('role');
-        $args['realm'] = $input->getOption('realm');
-
-        $manifest = $service->manifest($args, $input->getOption('base'));
+        $manifest = $service->manifest($input->getOptions(), $input->getOption('base'));
 
         $output->write($manifest, true, OutputInterface::OUTPUT_PLAIN);
     }

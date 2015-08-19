@@ -20,7 +20,7 @@ class ManifestResolver extends FileResolver {
         $this->target = $role;
         $this->applyRules($role);
 
-        $file = $this->process($this->target, $this->file . '.manifest', 'default', 'default.manifest');
+        $file = $this->process($this->target, $this->file . '.yaml', 'default', 'default.yaml');
 
         return $file;
     }

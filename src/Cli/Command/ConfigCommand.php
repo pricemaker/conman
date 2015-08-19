@@ -17,7 +17,6 @@ class ConfigCommand extends Command {
             ->setDescription('Get the config for a role')
             ->addOption('role', 'r', InputOption::VALUE_REQUIRED, 'The role to fetch the config for')
             ->addOption('realm', 'm', InputOption::VALUE_OPTIONAL, 'The provisioning realm for the config', 'production')
-            ->addOption('arg', null, InputOption::VALUE_OPTIONAL | InputOption::VALUE_IS_ARRAY, 'Optional additional arguments')
             ->addOption('format', 'f', InputOption::VALUE_OPTIONAL, 'The output file format', 'json')
         ;
     }
@@ -29,10 +28,7 @@ class ConfigCommand extends Command {
 
         $service->setOutput($output);
 
-        $args = $input->getOption('arg');
-        $args['role'] = $input->getOption('role');
-        $args['realm'] = $input->getOption('realm');
-
+        $args = $input->getOptions();
         $config = $service->config($args, $input->getOption('base'));
 
         $format = $input->getOption('format');

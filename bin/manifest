@@ -1,0 +1,19 @@
+#!/usr/bin/env php
+<?php
+
+$phar_name = 'conman.phar';
+$download_url = 's3://example-bucket/conman-latest.phar';
+$version = $argv[1];
+
+$phar = __DIR__ . '/../pkg/conman-latest.phar';
+
+$sha1 = sha1_file($phar);
+
+$manifest = array(
+    'name' => $phar_name,
+    'sha1' => $sha1,
+    'url' => $download_url,
+    'version' => $version
+);
+
+echo json_encode([$manifest]);

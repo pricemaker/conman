@@ -6,8 +6,8 @@ namespace Conman\Cli;
 
 use Conman\Cli\Command\ConfigCommand;
 use Conman\Cli\Command\FileCommand;
-use Conman\Cli\Command\HelloCommand;
 use Conman\Cli\Command\ManifestCommand;
+use Conman\Cli\Command\SelfUpdateCommand;
 use Symfony\Component\Console\Application as SymfonyApplication;
 use Symfony\Component\Console\Input\InputOption;
 
@@ -23,7 +23,8 @@ class Application extends SymfonyApplication {
         $this->addCommands([
             new ManifestCommand(),
             new ConfigCommand(),
-            new FileCommand()
+            new FileCommand(),
+            new SelfUpdateCommand()
         ]);
 
         $this->getDefinition()->addOptions([

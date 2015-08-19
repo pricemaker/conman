@@ -5,6 +5,7 @@ require __DIR__.'/../vendor/autoload.php';
 
 use Conman\Cli\Application;
 use Conman\Cli\Command;
+use Conman\Symfony\Component\Console\Input\DynamicArgvInput;
 
 $application = new Application(<<<CONMAN
   ___ ___  _ __  _ __ ___   __ _ _ __
@@ -15,6 +16,8 @@ $application = new Application(<<<CONMAN
 
 CONMAN
     , '@package_version@');
-$application->run();
+
+$input = new DynamicArgvInput();
+$application->run($input);
 
 exit;

@@ -11,11 +11,14 @@
             "name": "*.php",
             "exclude": ["Tests"],
             "in": "vendor"
+        },
+        {
+          "name": "*.json",
+          "in": "vendor"
         }
     ],
     "base-path": ".",
     "intercept": true,
-    "git-version": "package_version",
     "main": "bin/conman",
     "output": "dist/conman.phar",
     "stub": true
